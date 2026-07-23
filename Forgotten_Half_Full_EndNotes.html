@@ -94,10 +94,19 @@
     background:#f6ecd8;font-weight:600;vertical-align:middle;}
   /* Single-spaced, no inflated gaps: paragraphs inside a case cell sit tight,
      and normal weight is asserted so only the explicit <strong> labels
-     ("General Description:", "Score:", "Why Case is Relevant:") read as bold. */
-  table.voto.cases td p{margin:0 0 .35rem;text-align:left;line-height:1.25;
+     ("General Description:", "Score:", "Why Case is Relevant:") read as bold.
+     BASELINE ALIGNMENT: the case column (B) is built from several short
+     paragraphs — case name, citation, Score, In Exam — while the description
+     column (C) is one flowing paragraph. Any bottom margin on B's paragraphs
+     therefore pushes each successive line off the leading grid that C sits on,
+     so the citation drifted below the description's matching line. Margin is
+     zeroed here so both columns advance by line-height alone and their lines
+     stay level. The stacked-paragraph cells that genuinely need separation —
+     the holding and the "Why Case is Relevant" note in the merged row — get
+     their gap back via the [colspan] rule below. */
+  table.voto.cases td p{margin:0;text-align:left;line-height:1.25;
     font-weight:normal;}
-  table.voto.cases td p:last-child{margin-bottom:0;}
+  table.voto.cases td[colspan] p + p{margin-top:.5rem;}
   table.voto.cases td strong{font-weight:700;}
   /* The description continues from the upper cell into the full-width row
      below it. Drop the padding between them so the prose reads as one column
